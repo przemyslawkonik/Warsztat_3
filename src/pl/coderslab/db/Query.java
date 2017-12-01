@@ -83,7 +83,7 @@ public class Query {
 	}
 	
 	public static final String selectAllSolutionsWithLimit() {
-		return "SELECT * FROM solution LIMIT ?";
+		return "SELECT * FROM solution ORDER BY updated DESC LIMIT ?";
 	}
 	
 	public static final String selectSolutionById() {

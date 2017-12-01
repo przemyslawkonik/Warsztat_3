@@ -11,24 +11,26 @@
 <%@include file="WEB-INF/fragments/header.jspf"%>
 <table border="1" align="center">
  <tr> 
-  <th scope="row" colspan="4" align="center">Solution details</th>
+  <th scope="row" colspan="3" align="center">Solution details</th>
  </tr>
  <tr>
-  <th scope="row" colspan="2" align="center">Author</th>
-  <th scope="row" colspan="2" align="center">Excercise</th>
+  <th scope="row" colspan="3" align="center">Author</th>
+ <%@include file="WEB-INF/fragments/showUsers.jspf"%>
+  <th scope="row" colspan="3" align="center">Excercise</th>
+ <%@include file="WEB-INF/fragments/showExcercises.jspf"%>
  </tr>
- <tr>
-  <th scope="col">Name</th>
-  <th scope="col">Email</th>
-  <th scope="col">Title</th>
-  <th scope="col">Description</th>
- </tr>
- <tr>
-  <td>${user.username}</td>
-  <td>${user.email}</td>
-  <td>${excercise.title}</td>
-  <td>${excercise.description}</td>
- </tr>
+<!--  <tr> -->
+<!--   <th scope="col">Name</th> -->
+<!--   <th scope="col">Email</th> -->
+<!--   <th scope="col">Title</th> -->
+<!--   <th scope="col">Description</th> -->
+<!--  </tr> -->
+<!--  <tr> -->
+<%--   <td>${user.username}</td> --%>
+<%--   <td>${user.email}</td> --%>
+<%--   <td>${excercise.title}</td> --%>
+<%--   <td>${excercise.description}</td> --%>
+<!--  </tr> -->
 </table>
 <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>

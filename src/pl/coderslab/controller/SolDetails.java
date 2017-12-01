@@ -2,6 +2,7 @@ package pl.coderslab.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,8 +37,8 @@ public class SolDetails extends HttpServlet {
 		try {
 			int userId = Integer.parseInt(request.getParameter("user_id"));
 			int excerciseId = Integer.parseInt(request.getParameter("excercise_id"));
-			request.setAttribute("user", UserDao.loadById(userId));
-			request.setAttribute("excercise", ExcerciseDao.loadById(excerciseId));
+			request.setAttribute("users", Arrays.asList(UserDao.loadById(userId)));
+			request.setAttribute("excercises", Arrays.asList(ExcerciseDao.loadById(excerciseId)));
 			getServletContext().getRequestDispatcher("/solDetails.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();

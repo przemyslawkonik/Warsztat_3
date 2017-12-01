@@ -79,11 +79,19 @@ public class Query {
 	}
 	
 	public static final String selectAllSolutions() {
-		return "SELECT * FROM solution";
+		return "SELECT * FROM solution ORDER BY updated DESC";
 	}
 	
 	public static final String selectAllSolutionsWithLimit() {
 		return "SELECT * FROM solution ORDER BY updated DESC LIMIT ?";
+	}
+	
+	public static final String selectAllResolvedSolutions() {
+		return "SELECT * FROM solution WHERE updated IS NOT NULL ORDER BY updated DESC";
+	}
+	
+	public static final String selectAllResolvedSolutionsWithLimit() {
+		return "SELECT * FROM solution WHERE updated IS NOT NULL ORDER BY updated DESC LIMIT ?";
 	}
 	
 	public static final String selectSolutionById() {

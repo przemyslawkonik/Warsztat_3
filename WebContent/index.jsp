@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"u
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,24 +11,18 @@
 <%@include file="WEB-INF/fragments/header.jspf"%>
 <table border="1" align="center">
  <tr>
-  <th scope="row" colspan="6" align="center">Solutions</th>
+  <th scope="row" colspan="3" align="center">Top ${initParam["number-solutions"]} latest solutions</th>
  </tr>
  <tr>
-  <th scope="col">Id</th>
-  <th scope="col">Excercise</th>
-  <th scope="col">Author</th>
   <th scope="col">Description</th>
-  <th scope="col">Created</th>
   <th scope="col">Updated</th>
+  <th scope="col">Details</th>
  </tr>
  <c:forEach var="s" items="${solutions}">
   <tr>
-   <td>${s.id}</td>
-   <td>${s.excerciseId}</td>
-   <td>${s.userId}</td>
-   <td>${s.description}</td>
-   <td>${s.created}</td>
+   <td>#{s.description}</td>
    <td>${s.updated}</td>
+   <td><a href="/">more</a></td>
   </tr>
  </c:forEach>
 </table>

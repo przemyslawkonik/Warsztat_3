@@ -13,6 +13,12 @@ public class Excercise {
 		this.description = description;
 	}
 
+	public Excercise(int id, String title, String description) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -31,6 +37,10 @@ public class Excercise {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

@@ -29,22 +29,6 @@ public class SolutionDao {
 		}
 	}
 
-	public static final List<Solution> loadAllResolved() throws SQLException {
-		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = conn.prepareStatement(Query.selectAllResolvedSolutions());
-				ResultSet rs = ps.executeQuery()) {
-			return load(rs);
-		}
-	}
-
-	public static final List<Solution> loadAllResolved(int limit) throws SQLException {
-		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = create(conn, Query.selectAllResolvedSolutionsWithLimit(), limit);
-				ResultSet rs = ps.executeQuery()) {
-			return load(rs);
-		}
-	}
-
 	public static final Solution loadById(int id) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
 				PreparedStatement ps = create(conn, Query.selectSolutionById(), id);

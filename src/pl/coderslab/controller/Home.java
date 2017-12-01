@@ -34,7 +34,7 @@ public class Home extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			int maxSolution = Integer.parseInt(getInitParam("number-solutions"));
-			request.setAttribute("solutions", SolutionDao.loadAllResolved(maxSolution));
+			request.setAttribute("solutions", SolutionDao.loadAll(maxSolution));
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -8,6 +8,7 @@
 <title>List of groups</title>
 </head>
 <body>
+<%@include file="WEB-INF/fragments/header.jspf"%>
 <table border="1" align="center">
  <tr>
   <th scope="row" colspan="2" align="center">Groups</th>
@@ -23,5 +24,6 @@
   </tr>
  </c:forEach>
 </table>
+<%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

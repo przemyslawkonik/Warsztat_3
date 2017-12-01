@@ -21,6 +21,14 @@ public class SolutionDao {
 		}
 	}
 
+	public static final List<Solution> loadAll(int limit) throws SQLException {
+		try (Connection conn = DbUtil.getConn();
+				PreparedStatement ps = create(conn, Query.selectAllSolutionsWithLimit(), limit);
+				ResultSet rs = ps.executeQuery()) {
+			return load(rs);
+		}
+	}
+
 	public static final Solution loadById(int id) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
 				PreparedStatement ps = create(conn, Query.selectSolutionById(), id);

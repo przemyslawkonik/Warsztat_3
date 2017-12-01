@@ -82,6 +82,10 @@ public class Query {
 		return "SELECT * FROM solution";
 	}
 	
+	public static final String selectAllSolutionsWithLimit() {
+		return "SELECT * FROM solution LIMIT ?";
+	}
+	
 	public static final String selectSolutionById() {
 		return "SELECT * FROM solution WHERE id=?";
 	}

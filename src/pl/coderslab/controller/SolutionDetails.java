@@ -2,6 +2,7 @@ package pl.coderslab.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,16 +14,16 @@ import pl.coderslab.dao.ExcerciseDao;
 import pl.coderslab.dao.UserDao;
 
 /**
- * Servlet implementation class SolDetails
+ * Servlet implementation class SolutionDetails
  */
-@WebServlet("/solDetails")
-public class SolDetails extends HttpServlet {
+@WebServlet("/solutionDetails")
+public class SolutionDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SolDetails() {
+	public SolutionDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,9 +37,9 @@ public class SolDetails extends HttpServlet {
 		try {
 			int userId = Integer.parseInt(request.getParameter("user_id"));
 			int excerciseId = Integer.parseInt(request.getParameter("excercise_id"));
-			request.setAttribute("user", UserDao.loadById(userId));
-			request.setAttribute("excercise", ExcerciseDao.loadById(excerciseId));
-			getServletContext().getRequestDispatcher("/solDetails.jsp").forward(request, response);
+			request.setAttribute("users", Arrays.asList(UserDao.loadById(userId)));
+			request.setAttribute("excercises", Arrays.asList(ExcerciseDao.loadById(excerciseId)));
+			getServletContext().getRequestDispatcher("/solutionDetails.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

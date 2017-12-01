@@ -5,24 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>List of groups</title>
+<title>Groups</title>
 </head>
 <body>
 <%@include file="WEB-INF/fragments/header.jspf"%>
 <table border="1" align="center">
  <tr>
-  <th scope="row" colspan="2" align="center">List of groups</th>
+  <th scope="row" colspan="2" align="center">Groups</th>
  </tr>
- <tr>
-  <th scope="col">Name</th>
-  <th scope="col">Details</th>
- </tr>
- <c:forEach var="group" items="${groups}">
-  <tr>
-   <td>${group.name}</td>
-   <td><a href="/Warsztat_3/groupDetails?id=${group.id}">more</a></td>
-  </tr>
- </c:forEach>
+ <%@include file="WEB-INF/fragments/showGroups.jspf"%>
 </table>
 <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>

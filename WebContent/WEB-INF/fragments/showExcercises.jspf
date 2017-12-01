@@ -1,20 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Users</title>
+<title>Excercises</title>
 </head>
 <body>
-<%@include file="WEB-INF/fragments/header.jspf"%>
-<table border="1" align="center">
  <tr>
-  <th scope="row" colspan="3" align="center">Users</th>
+  <th scope="col">Title</th>
+  <th scope="col">Description</th>
+  <th scope="col">Details</th>
  </tr>
- <%@include file="WEB-INF/fragments/showUsers.jspf"%>
-</table>
-<%@include file="WEB-INF/fragments/footer.jspf"%>
+ <c:forEach var="e" items="${excercises}">
+  <tr>
+   <td>${e.title}</td>
+   <td>${e.description}</td>
+   <td><a href="">more</a></td>
+  </tr>
+ </c:forEach>
 </body>
 </html>

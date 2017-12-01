@@ -8,13 +8,15 @@
 <title>Groups</title>
 </head>
 <body>
-<%@include file="WEB-INF/fragments/header.jspf"%>
-<table border="1" align="center">
  <tr>
-  <th scope="row" colspan="2" align="center">Groups</th>
+  <th scope="col">Name</th>
+  <th scope="col">Details</th>
  </tr>
- <%@include file="WEB-INF/fragments/showGroups.jspf"%>
-</table>
-<%@include file="WEB-INF/fragments/footer.jspf"%>
+ <c:forEach var="g" items="${groups}">
+  <tr>
+   <td>${g.name}</td>
+   <td><a href="/Warsztat_3/groupDetails?id=${g.id}">more</a></td>
+  </tr>
+ </c:forEach>
 </body>
 </html>

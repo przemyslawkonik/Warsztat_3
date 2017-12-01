@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<p><a href="/Warsztat_3/">Home</a></p>
+<p>
+ <a href="/Warsztat_3/">Home</a>
+ <a href="/Warsztat_3/groups">Groups</a>
+</p>

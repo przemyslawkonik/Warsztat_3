@@ -11,7 +11,7 @@
 <%@include file="WEB-INF/fragments/header.jspf"%>
 <table border="1" align="center">
  <tr>
-  <th scope="row" colspan="2" align="center">Groups</th>
+  <th scope="row" colspan="2" align="center">List of groups</th>
  </tr>
  <tr>
   <th scope="col">Name</th>

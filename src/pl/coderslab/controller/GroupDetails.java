@@ -35,7 +35,7 @@ public class GroupDetails extends HttpServlet {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("users", UserDao.loadAllByGroupId(id));
-			getServletContext().getRequestDispatcher("/groupDetails.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/users.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

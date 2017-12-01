@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>List of users</title>
 </head>
 <body>
 <%@include file="WEB-INF/fragments/header.jspf"%>
 <table border="1" align="center">
  <tr>
-  <th scope="row" colspan="3" align="center">Users</th>
+  <th scope="row" colspan="3" align="center">List of users</th>
  </tr>
  <tr>
   <th scope="col">Name</th>

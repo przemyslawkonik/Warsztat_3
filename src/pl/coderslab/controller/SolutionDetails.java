@@ -14,16 +14,16 @@ import pl.coderslab.dao.ExcerciseDao;
 import pl.coderslab.dao.UserDao;
 
 /**
- * Servlet implementation class SolDetails
+ * Servlet implementation class SolutionDetails
  */
-@WebServlet("/solDetails")
-public class SolDetails extends HttpServlet {
+@WebServlet("/solutionDetails")
+public class SolutionDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SolDetails() {
+	public SolutionDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -39,7 +39,7 @@ public class SolDetails extends HttpServlet {
 			int excerciseId = Integer.parseInt(request.getParameter("excercise_id"));
 			request.setAttribute("users", Arrays.asList(UserDao.loadById(userId)));
 			request.setAttribute("excercises", Arrays.asList(ExcerciseDao.loadById(excerciseId)));
-			getServletContext().getRequestDispatcher("/solDetails.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/solutionDetails.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

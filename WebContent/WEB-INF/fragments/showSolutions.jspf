@@ -5,19 +5,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Users</title>
+<title>Solutions</title>
 </head>
 <body>
  <tr>
-  <th scope="col">Name</th>
-  <th scope="col">Email</th>
+  <th scope="col">Created</th>
+  <th scope="col">Updated</th>
+  <th scope="col">Description</th>
   <th scope="col">Details</th>
  </tr>
- <c:forEach var="u" items="${users}">
+ <c:forEach var="s" items="${solutions}">
   <tr>
-   <td>${u.username}</td>
-   <td>${u.email}</td>
-   <td><a href="/Warsztat_3/userDetails?id=${u.id}">more</a></td>
+   <td>${s.created}</td>
+   <td>${s.updated}</td>
+   <td>${s.description}</td>
+   <td><a href="/Warsztat_3/solutionDetails?user_id=${s.userId}&excercise_id=${s.excerciseId}">more</a></td>
   </tr>
  </c:forEach>
 </body>

@@ -13,20 +13,7 @@
  <tr>
   <th scope="row" colspan="4" align="center">Top ${initParam["number-solutions"]} latest solutions</th>
  </tr>
- <tr>
-  <th scope="col">Description</th>
-  <th scope="col">Created</th>
-  <th scope="col">Updated</th>
-  <th scope="col">Details</th>
- </tr>
- <c:forEach var="s" items="${solutions}">
-  <tr>
-   <td>${s.description}</td>
-   <td>${s.created}</td>
-   <td>${s.updated}</td>
-   <td><a href="/Warsztat_3/solDetails?user_id=${s.userId}&excercise_id=${s.excerciseId}">more</a></td>
-  </tr>
- </c:forEach>
+ <%@include file="WEB-INF/fragments/showSolutions.jspf"%>
 </table>
 <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>

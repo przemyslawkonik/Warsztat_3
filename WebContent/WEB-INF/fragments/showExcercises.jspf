@@ -13,10 +13,10 @@
   <th scope="col">Description</th>
   <th scope="col">Details</th>
  </tr>
- <c:forEach var="excercise" items="${excercises}">
+ <c:forEach var="e" items="${excercises}">
   <tr>
-   <td>${excercise.title}</td>
-   <td>${excercise.description}</td>
+   <td>${e.title}</td>
+   <td>${e.description}</td>
    <td><a href="">more</a></td>
   </tr>
  </c:forEach>

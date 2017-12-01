@@ -11,6 +11,11 @@ public class Group {
 		this.name = name;
 	}
 
+	public Group(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -23,4 +28,8 @@ public class Group {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 }

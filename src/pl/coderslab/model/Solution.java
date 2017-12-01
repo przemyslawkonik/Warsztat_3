@@ -19,6 +19,15 @@ public class Solution {
 		this.userId = userId;
 	}
 
+	public Solution(int id, String created, String updated, String description, int excerciseId, long userId) {
+		this.id = id;
+		this.created = created;
+		this.updated = updated;
+		this.description = description;
+		this.excerciseId = excerciseId;
+		this.userId = userId;
+	}
+
 	public String getCreated() {
 		return created;
 	}
@@ -61,6 +70,10 @@ public class Solution {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

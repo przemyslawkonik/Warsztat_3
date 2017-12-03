@@ -8,18 +8,12 @@
 <title>Solution details</title>
 </head>
 <body>
-<%@include file="WEB-INF/fragments/header.jspf"%>
-<table border="1" align="center">
- <tr> 
-  <th scope="row" colspan="3" align="center">Solution details</th>
- </tr>
- <tr>
-  <th scope="row" colspan="3" align="center">Author</th>
+ <%@include file="WEB-INF/fragments/header.jspf"%>
+ <h1>Solution details</h1>
+ <h2>Author</h2>
  <%@include file="WEB-INF/fragments/showUsers.jspf"%>
-  <th scope="row" colspan="3" align="center">Excercise</th>
+ <h2>Excercise</h2>
  <%@include file="WEB-INF/fragments/showExcercises.jspf"%>
- </tr>
-</table>
-<%@include file="WEB-INF/fragments/footer.jspf"%>
+ <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

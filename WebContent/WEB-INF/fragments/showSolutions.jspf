@@ -1,3 +1,4 @@
+<table border="1">
  <tr>
   <th scope="col">Created</th>
   <th scope="col">Updated</th>
@@ -12,3 +13,4 @@
    <td><a href="/Warsztat_3/solutionDetails?user_id=${s.userId}&excercise_id=${s.excerciseId}">more</a></td>
   </tr>
  </c:forEach>
+</table>

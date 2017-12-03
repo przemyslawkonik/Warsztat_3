@@ -8,13 +8,9 @@
 <title>Users</title>
 </head>
 <body>
-<%@include file="WEB-INF/fragments/header.jspf"%>
-<table border="1" align="center">
- <tr>
-  <th scope="row" colspan="3" align="center">Users</th>
- </tr>
+ <%@include file="WEB-INF/fragments/header.jspf"%>
+ <h1>List of users</h1>
  <%@include file="WEB-INF/fragments/showUsers.jspf"%>
-</table>
-<%@include file="WEB-INF/fragments/footer.jspf"%>
+ <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

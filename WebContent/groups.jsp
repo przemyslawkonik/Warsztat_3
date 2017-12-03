@@ -8,13 +8,9 @@
 <title>Groups</title>
 </head>
 <body>
-<%@include file="WEB-INF/fragments/header.jspf"%>
-<table border="1" align="center">
- <tr>
-  <th scope="row" colspan="2" align="center">Groups</th>
- </tr>
+ <%@include file="WEB-INF/fragments/header.jspf"%>
+ <h1>List of groups</h1>
  <%@include file="WEB-INF/fragments/showGroups.jspf"%>
-</table>
-<%@include file="WEB-INF/fragments/footer.jspf"%>
+ <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

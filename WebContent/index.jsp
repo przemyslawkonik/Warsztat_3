@@ -8,13 +8,9 @@
 <title>Programming school</title>
 </head>
 <body>
-<%@include file="WEB-INF/fragments/header.jspf"%>
-<table border="1" align="center">
- <tr>
-  <th scope="row" colspan="4" align="center">Top ${initParam["number-solutions"]} latest solutions</th>
- </tr>
+ <%@include file="WEB-INF/fragments/header.jspf"%>
+ <h1>Top ${initParam["number-solutions"]} latest solutions</h1>
  <%@include file="WEB-INF/fragments/showSolutions.jspf"%>
-</table>
-<%@include file="WEB-INF/fragments/footer.jspf"%>
+ <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

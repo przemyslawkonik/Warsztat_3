@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.coderslab.dao.SolutionDao;
+import pl.coderslab.dao.SolutionDtoDao;
 
 /**
  * Servlet implementation class Home
@@ -34,7 +34,7 @@ public class Home extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			int maxSolution = Integer.parseInt(getInitParam("number-solutions"));
-			request.setAttribute("solutions", SolutionDao.loadAll(maxSolution));
+			request.setAttribute("solutions", SolutionDtoDao.loadAll(maxSolution));
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();

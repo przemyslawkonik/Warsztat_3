@@ -2,7 +2,6 @@ package pl.coderslab.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pl.coderslab.dao.ExcerciseDao;
-import pl.coderslab.dao.UserDao;
+import pl.coderslab.dao.SolutionDao;
 
 /**
  * Servlet implementation class SolutionDetails
@@ -35,22 +34,14 @@ public class SolutionDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			int userId = Integer.parseInt(request.getParameter("user_id"));
+			int solutionId = Integer.parseInt(request.getParameter("solution_id"));
 			int excerciseId = Integer.parseInt(request.getParameter("excercise_id"));
-			request.setAttribute("users", Arrays.asList(UserDao.loadById(userId)));
-			request.setAttribute("excercises", Arrays.asList(ExcerciseDao.loadById(excerciseId)));
+			request.setAttribute("solution", SolutionDao.loadById(solutionId));
+			request.setAttribute("excercise", ExcerciseDao.loadById(excerciseId));
 			getServletContext().getRequestDispatcher("/solutionDetails.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 	}
 
 }

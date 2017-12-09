@@ -4,14 +4,14 @@
   <th scope="col">Author</th>
   <th scope="col">Title</th>
   <th scope="col">Updated</th>
-  <th scope="col">Details</th>
+  <th scope="col"></th>
  </tr>
  <c:forEach var="s" items="${solutions}">
   <tr>
    <td>${s.username}</td>
    <td>${s.title}</td>
    <td>${s.updated}</td>
-   <td><a href="/Warsztat_3/solutionDetails?user_id=${s.userId}&excercise_id=${s.excerciseId}">more</a></td>
+   <td><a href="/Warsztat_3/solutionDetails?excercise_id=${s.excerciseId}&solution_id=${s.solutionId}">details</a></td>
   </tr>
  </c:forEach>
 </table>

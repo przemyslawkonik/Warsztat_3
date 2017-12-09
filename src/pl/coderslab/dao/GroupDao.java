@@ -23,7 +23,7 @@ public class GroupDao {
 
 	public static final Group loadById(int id) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = create(conn, id);
+				PreparedStatement ps = create(conn, Query.selectGroupById(), id);
 				ResultSet rs = ps.executeQuery()) {
 			return load(rs).get(0);
 		}
@@ -40,14 +40,14 @@ public class GroupDao {
 	}
 
 	public static final Group update(Group g) throws SQLException {
-		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = conn.prepareStatement(Query.updateGroup())) {
+		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, g)) {
 			ps.executeUpdate();
 			return g;
 		}
 	}
 
 	public static final Group delete(Group g) throws SQLException {
-		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = conn.prepareStatement(Query.deleteGroup())) {
+		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, Query.deleteGroup(), g.getId())) {
 			ps.executeUpdate();
 			g.setId(0);
 			return g;
@@ -62,8 +62,15 @@ public class GroupDao {
 		return groups;
 	}
 
-	private static final PreparedStatement create(Connection conn, int id) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement(Query.selectGroupById());
+	private static final PreparedStatement create(Connection conn, Group g) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(Query.updateGroup());
+		ps.setString(1, g.getName());
+		ps.setInt(2, g.getId());
+		return ps;
+	}
+
+	private static final PreparedStatement create(Connection conn, String query, int id) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(query);
 		ps.setInt(1, id);
 		return ps;
 	}

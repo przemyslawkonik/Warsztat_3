@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pl.coderslab.dao.GroupDao;
+import pl.coderslab.model.Group;
 
 /**
  * Servlet implementation class GroupManager
@@ -50,10 +51,23 @@ public class GroupManager extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+
+        try {
+            if (id == 0) {
+                GroupDao.save(new Group(name));
+            } else {
+                Group g = GroupDao.loadById(id);
+                g.setName(name);
+                GroupDao.update(g);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

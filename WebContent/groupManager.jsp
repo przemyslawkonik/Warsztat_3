@@ -19,11 +19,12 @@
   <c:forEach var="g" items="${groups}">
    <tr>
     <td>${g.name}</td>
-    <td><a href="/Warsztat_3/editGroup.jsp?id=${g.id}">edit</a></td>
+    <td><a href="/Warsztat_3/groupForm.jsp?id=${g.id}">edit</a></td>
     <td><a href="/Warsztat_3/groupManager?remove_id=${g.id}">remove</a></td>
    </tr>
   </c:forEach>
  </table>
+ <a href="/Warsztat_3/groupForm.jsp?id=0">Add new group</a>
  <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

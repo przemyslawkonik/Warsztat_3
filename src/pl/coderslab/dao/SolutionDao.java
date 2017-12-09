@@ -47,7 +47,7 @@ public class SolutionDao {
 
 	public static final List<Solution> loadAllByExcerciseId(int id) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = create(conn, Query.selectAllSolutionsByExcerciseId(), id);
+				PreparedStatement ps = create(conn, Query.selectAllSolutionsByExerciseId(), id);
 				ResultSet rs = ps.executeQuery()) {
 			return load(rs);
 		}
@@ -82,7 +82,7 @@ public class SolutionDao {
 		List<Solution> solutions = new ArrayList<>();
 		while (rs.next()) {
 			solutions.add(new Solution(rs.getInt("id"), rs.getString("created"), rs.getString("updated"),
-					rs.getString("description"), rs.getInt("excercise_id"), rs.getLong("users_id")));
+					rs.getString("description"), rs.getInt("exercise_id"), rs.getLong("users_id")));
 		}
 		return solutions;
 	}

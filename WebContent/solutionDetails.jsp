@@ -8,8 +8,8 @@
 </head>
 <body>
  <%@include file="WEB-INF/fragments/header.jspf"%>
- <h2>Excercise description</h2>
- <p>${excercise.description}</p>
+ <h2>Exercise description</h2>
+ <p>${exercise.description}</p>
  <h2>Solution</h2>
  <p>${solution.description}</p>
  <%@include file="WEB-INF/fragments/footer.jspf"%>

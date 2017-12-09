@@ -3,23 +3,23 @@ package pl.coderslab.model;
 public class SolutionDto {
 	private int solutionId;
 	private String updated;
-	private int excerciseId;
+	private int exerciseId;
 	private String title;
 	private long userId;
 	private String username;
 
-	public SolutionDto(String updated, int excerciseId, String title, long userId, String username) {
+	public SolutionDto(String updated, int exerciseId, String title, long userId, String username) {
 		this.updated = updated;
-		this.excerciseId = excerciseId;
+		this.exerciseId = exerciseId;
 		this.title = title;
 		this.userId = userId;
 		this.username = username;
 	}
 
-	public SolutionDto(int solutionId, String updated, int excerciseId, String title, long userId, String username) {
+	public SolutionDto(int solutionId, String updated, int exerciseId, String title, long userId, String username) {
 		this.solutionId = solutionId;
 		this.updated = updated;
-		this.excerciseId = excerciseId;
+		this.exerciseId = exerciseId;
 		this.title = title;
 		this.userId = userId;
 		this.username = username;
@@ -41,12 +41,12 @@ public class SolutionDto {
 		this.updated = updated;
 	}
 
-	public int getExcerciseId() {
-		return excerciseId;
+	public int getExerciseId() {
+		return exerciseId;
 	}
 
-	public void setExcerciseId(int excerciseId) {
-		this.excerciseId = excerciseId;
+	public void setExerciseId(int exerciseId) {
+		this.exerciseId = exerciseId;
 	}
 
 	public String getTitle() {

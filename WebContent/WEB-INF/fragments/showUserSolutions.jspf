@@ -9,7 +9,7 @@
   <tr>
    <td>${s.title}</td>
    <td>${s.updated}</td>
-   <td><a href="/Warsztat_3/solutionDetails?excercise_id=${s.excerciseId}&solution_id=${s.solutionId}">details</a></td>
+   <td><a href="/Warsztat_3/solutionDetails?exercise_id=${s.exerciseId}&solution_id=${s.solutionId}">details</a></td>
   </tr>
  </c:forEach>
 </table>

@@ -15,7 +15,7 @@ public class SolutionDtoDao {
 
 	public static final List<SolutionDto> loadAll() throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = conn.prepareStatement(Query.selectAllSolutionsUsersExcercise());
+				PreparedStatement ps = conn.prepareStatement(Query.selectAllSolutionsUsersExercise());
 				ResultSet rs = ps.executeQuery()) {
 			return load(rs);
 		}
@@ -23,7 +23,7 @@ public class SolutionDtoDao {
 
 	public static final List<SolutionDto> loadAll(int limit) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = create(conn, Query.selectAllSolutionsUsersExcerciseWithLimit(), limit);
+				PreparedStatement ps = create(conn, Query.selectAllSolutionsUsersExerciseWithLimit(), limit);
 				ResultSet rs = ps.executeQuery()) {
 			return load(rs);
 		}
@@ -31,7 +31,7 @@ public class SolutionDtoDao {
 
 	public static final List<SolutionDto> loadAllByUserId(long id) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = create(conn, Query.selectAllSolutionsUsersExcerciseByUserId(), id);
+				PreparedStatement ps = create(conn, Query.selectAllSolutionsUsersExerciseByUserId(), id);
 				ResultSet rs = ps.executeQuery()) {
 			return load(rs);
 		}
@@ -41,7 +41,7 @@ public class SolutionDtoDao {
 		List<SolutionDto> solutions = new ArrayList<>();
 		while (rs.next()) {
 			solutions.add(new SolutionDto(rs.getInt("solution.id"), rs.getString("solution.updated"),
-					rs.getInt("excercise.id"), rs.getString("excercise.title"), rs.getLong("users.id"),
+					rs.getInt("exercise.id"), rs.getString("exercise.title"), rs.getLong("users.id"),
 					rs.getString("users.username")));
 		}
 		return solutions;

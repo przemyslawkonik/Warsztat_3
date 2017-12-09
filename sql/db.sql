@@ -14,7 +14,7 @@ CREATE TABLE users(
 	FOREIGN KEY(user_group_id) REFERENCES user_group(id) ON DELETE CASCADE
 );
 
-CREATE TABLE excercise(
+CREATE TABLE exercise(
 	id INT AUTO_INCREMENT,
 	title VARCHAR(255),
 	description TEXT,
@@ -26,9 +26,9 @@ CREATE TABLE solution(
 	created DATETIME DEFAULT NOW(),
 	updated DATETIME,
 	description TEXT,
-	excercise_id INT,
+	exercise_id INT,
 	users_id BIGINT,
 	PRIMARY KEY(id),
-	FOREIGN KEY(excercise_id) REFERENCES excercise(id) ON DELETE CASCADE,
+	FOREIGN KEY(exercise_id) REFERENCES exercise(id) ON DELETE CASCADE,
 	FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE
 );

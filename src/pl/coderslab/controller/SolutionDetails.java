@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.coderslab.dao.ExcerciseDao;
+import pl.coderslab.dao.ExerciseDao;
 import pl.coderslab.dao.SolutionDao;
 
 /**
@@ -35,9 +35,9 @@ public class SolutionDetails extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			int solutionId = Integer.parseInt(request.getParameter("solution_id"));
-			int excerciseId = Integer.parseInt(request.getParameter("excercise_id"));
+			int excerciseId = Integer.parseInt(request.getParameter("exercise_id"));
 			request.setAttribute("solution", SolutionDao.loadById(solutionId));
-			request.setAttribute("excercise", ExcerciseDao.loadById(excerciseId));
+			request.setAttribute("exercise", ExerciseDao.loadById(excerciseId));
 			getServletContext().getRequestDispatcher("/solutionDetails.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();

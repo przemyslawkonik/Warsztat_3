@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.coderslab.dao.SolutionDao;
+import pl.coderslab.dao.SolutionDtoDao;
+import pl.coderslab.dao.UserDao;
 
 /**
  * Servlet implementation class UserDetails
@@ -34,19 +35,12 @@ public class UserDetails extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			long id = Integer.parseInt(request.getParameter("id"));
-			request.setAttribute("solutions", SolutionDao.loadAllByUserId(id));
+			request.setAttribute("user", UserDao.loadById(id));
+			request.setAttribute("solutions", SolutionDtoDao.loadAllByUserId(id));
 			getServletContext().getRequestDispatcher("/userDetails.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 	}
 
 }

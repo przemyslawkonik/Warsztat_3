@@ -12,7 +12,6 @@
  <p>${excercise.description}</p>
  <h2>Solution</h2>
  <p>${solution.description}</p>
- <a href="/Warsztat_3/">Back</a>;
  <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

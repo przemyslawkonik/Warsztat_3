@@ -9,9 +9,11 @@
 </head>
 <body>
  <%@include file="WEB-INF/fragments/header.jspf"%>
- <h1>User details</h1>
- <h2>Solutions</h2>
- <%@include file="WEB-INF/fragments/showSolutions.jspf"%>
+ <h1>${user.username} profile</h1>
+ <p>Name: ${user.username}</p>
+ <p>Email: ${user.email}</p>
+ <h2>Added solutions</h2>
+ <%@include file="WEB-INF/fragments/showUserSolutions.jspf"%>
  <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

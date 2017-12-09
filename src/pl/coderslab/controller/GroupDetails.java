@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pl.coderslab.dao.GroupDao;
 import pl.coderslab.dao.UserDao;
 
 /**
@@ -34,19 +35,12 @@ public class GroupDetails extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("group", GroupDao.loadById(id));
 			request.setAttribute("users", UserDao.loadAllByGroupId(id));
 			getServletContext().getRequestDispatcher("/users.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 	}
 
 }

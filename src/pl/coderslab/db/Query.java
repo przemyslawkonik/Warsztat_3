@@ -110,4 +110,10 @@ public class Query {
 				+ " JOIN excercise ON excercise.id=solution.excercise_id ORDER BY updated DESC LIMIT ?";
 	}
 	
+	public static final String selectAllSolutionsUsersExcerciseByUserId() {
+		return "SELECT users.id, users.username, excercise.id, excercise.title, solution.id, solution.updated"
+				+ " FROM users JOIN solution ON users.id=solution.users_id"
+				+ " JOIN excercise ON excercise.id=solution.excercise_id WHERE users.id=? ORDER BY updated";
+	}
+	
 }

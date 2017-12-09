@@ -29,6 +29,14 @@ public class SolutionDtoDao {
 		}
 	}
 
+	public static final List<SolutionDto> loadAllByUserId(long id) throws SQLException {
+		try (Connection conn = DbUtil.getConn();
+				PreparedStatement ps = create(conn, Query.selectAllSolutionsUsersExcerciseByUserId(), id);
+				ResultSet rs = ps.executeQuery()) {
+			return load(rs);
+		}
+	}
+
 	private static final List<SolutionDto> load(ResultSet rs) throws SQLException {
 		List<SolutionDto> solutions = new ArrayList<>();
 		while (rs.next()) {
@@ -42,6 +50,12 @@ public class SolutionDtoDao {
 	private static final PreparedStatement create(Connection conn, String query, int limit) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement(query);
 		ps.setInt(1, limit);
+		return ps;
+	}
+
+	private static final PreparedStatement create(Connection conn, String query, long id) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setLong(1, id);
 		return ps;
 	}
 

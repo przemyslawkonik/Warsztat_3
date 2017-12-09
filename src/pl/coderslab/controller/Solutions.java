@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.coderslab.dao.SolutionDao;
+import pl.coderslab.dao.SolutionDtoDao;
 
 /**
  * Servlet implementation class Solutions
@@ -33,19 +33,11 @@ public class Solutions extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			request.setAttribute("solutions", SolutionDao.loadAll());
+			request.setAttribute("solutions", SolutionDtoDao.loadAll());
 			getServletContext().getRequestDispatcher("/solutions.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 	}
 
 }

@@ -9,7 +9,7 @@
 <body>
  <%@include file="WEB-INF/fragments/header.jspf"%>
  <h1>Top ${initParam["number-solutions"]} latest solutions</h1>
- <%@include file="WEB-INF/fragments/showTopSolutions.jspf"%>
+ <%@include file="WEB-INF/fragments/showSolutions.jspf"%>
  <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

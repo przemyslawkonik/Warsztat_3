@@ -8,7 +8,7 @@
 </head>
 <body>
  <%@include file="WEB-INF/fragments/header.jspf"%>
- <h1>Users</h1>
+ <h1>Members of ${group.name}</h1>
  <%@include file="WEB-INF/fragments/showUsers.jspf"%>
  <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>

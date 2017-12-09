@@ -9,12 +9,12 @@
 </head>
 <body>
 <form action="/Warsztat_3/groupManager" method="post">
-    <input type="text" name="name">
-    <input type="hidden" name="id" value="${id}">
-    <c:if test="${id == 0}">
+    Name <input type="text" name="name">
+    <input type="hidden" name="id" value="${param.id}">
+    <c:if test="${param.id == 0}">
         <input type="submit" value="Add group">
     </c:if>
-    <c:if test="${id > 0}">
+    <c:if test="${param.id > 0}">
         <input type="submit" value="Edit group">
     </c:if>
 </form>

@@ -30,7 +30,7 @@ public class GroupDao {
 	}
 
 	public static final Group save(Group g) throws SQLException {
-		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, "id")) {
+		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, g, "id")) {
 			ps.executeUpdate();
 			try (ResultSet rs = ps.getGeneratedKeys()) {
 				g.setId(rs.getInt(1));
@@ -75,8 +75,10 @@ public class GroupDao {
 		return ps;
 	}
 
-	private static final PreparedStatement create(Connection conn, String... genCol) throws SQLException {
-		return conn.prepareStatement(Query.insertGroup(), genCol);
+	private static final PreparedStatement create(Connection conn, Group g, String... genCol) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(Query.insertGroup(), genCol);
+		ps.setString(1, g.getName());
+		return ps;
 	}
 
 }

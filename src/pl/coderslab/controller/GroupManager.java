@@ -68,6 +68,8 @@ public class GroupManager extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
+        response.sendRedirect("/Warsztat_3/groupManager");
     }
 
 }

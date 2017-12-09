@@ -33,24 +33,12 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			int maxSolution = Integer.parseInt(getInitParam("number-solutions"));
+			int maxSolution = Integer.parseInt(getServletContext().getInitParameter("number-solutions"));
 			request.setAttribute("solutions", SolutionDtoDao.loadAll(maxSolution));
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-	}
-
-	private String getInitParam(String param) {
-		return getServletContext().getInitParameter(param);
 	}
 
 }

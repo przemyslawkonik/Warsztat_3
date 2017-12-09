@@ -104,16 +104,22 @@ public class Query {
 				+ " JOIN exercise ON exercise.id=solution.exercise_id ORDER BY updated DESC";
 	}
 	
-	public static final String selectAllSolutionsUsersExerciseWithLimit() {
+	public static final String selectAllSolutionsDtoWithLimit() {
 		return "SELECT users.id, users.username, exercise.id, exercise.title, solution.id, solution.updated"
 				+ " FROM users JOIN solution ON users.id=solution.users_id"
 				+ " JOIN exercise ON exercise.id=solution.exercise_id ORDER BY updated DESC LIMIT ?";
 	}
 	
-	public static final String selectAllSolutionsUsersExerciseByUserId() {
+	public static final String selectAllSolutionsDtoByUserId() {
 		return "SELECT users.id, users.username, exercise.id, exercise.title, solution.id, solution.updated"
 				+ " FROM users JOIN solution ON users.id=solution.users_id"
 				+ " JOIN exercise ON exercise.id=solution.exercise_id WHERE users.id=? ORDER BY updated";
+	}
+	
+	public static final String selectAllSolutionsDtoByExerciseId() {
+		return "SELECT users.id, users.username, exercise.id, exercise.title, solution.id, solution.updated"
+				+ " FROM users JOIN solution ON users.id=solution.users_id"
+				+ " JOIN exercise ON exercise.id=solution.exercise_id WHERE exercise.id=? ORDER BY updated";
 	}
 	
 }

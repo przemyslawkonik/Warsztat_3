@@ -1,0 +1,13 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<table border="1">
+ <tr>
+  <th scope="col">Title</th>
+  <th scope="col"></th>
+ </tr>
+ <c:forEach var="e" items="${exercises}">
+  <tr>
+   <td>${e.title}</td>
+   <td><a href="/Warsztat_3/exerciseDetails?id=${e.id}">details</a></td>
+  </tr>
+ </c:forEach>
+</table>

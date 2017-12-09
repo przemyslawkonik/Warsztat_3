@@ -23,7 +23,7 @@ public class SolutionDtoDao {
 
 	public static final List<SolutionDto> loadAll(int limit) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = create(conn, Query.selectAllSolutionsUsersExerciseWithLimit(), limit);
+				PreparedStatement ps = create(conn, Query.selectAllSolutionsDtoWithLimit(), limit);
 				ResultSet rs = ps.executeQuery()) {
 			return load(rs);
 		}
@@ -31,7 +31,15 @@ public class SolutionDtoDao {
 
 	public static final List<SolutionDto> loadAllByUserId(long id) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = create(conn, Query.selectAllSolutionsUsersExerciseByUserId(), id);
+				PreparedStatement ps = create(conn, Query.selectAllSolutionsDtoByUserId(), id);
+				ResultSet rs = ps.executeQuery()) {
+			return load(rs);
+		}
+	}
+	
+	public static final List<SolutionDto> loadAllByExerciseId(int id) throws SQLException {
+		try (Connection conn = DbUtil.getConn();
+				PreparedStatement ps = create(conn, Query.selectAllSolutionsDtoByExerciseId(), id);
 				ResultSet rs = ps.executeQuery()) {
 			return load(rs);
 		}
@@ -47,9 +55,9 @@ public class SolutionDtoDao {
 		return solutions;
 	}
 
-	private static final PreparedStatement create(Connection conn, String query, int limit) throws SQLException {
+	private static final PreparedStatement create(Connection conn, String query, int param) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement(query);
-		ps.setInt(1, limit);
+		ps.setInt(1, param);
 		return ps;
 	}
 

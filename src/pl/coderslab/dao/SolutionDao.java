@@ -54,7 +54,7 @@ public class SolutionDao {
 	}
 
 	public static final Solution save(Solution s) throws SQLException {
-		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, "id")) {
+		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, s, "id")) {
 			ps.executeUpdate();
 			try (ResultSet rs = ps.getGeneratedKeys()) {
 				s.setId(rs.getInt(1));
@@ -64,14 +64,14 @@ public class SolutionDao {
 	}
 
 	public static final Solution update(Solution s) throws SQLException {
-		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = conn.prepareStatement(Query.updateSolution())) {
+		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, s)) {
 			ps.executeUpdate();
 			return s;
 		}
 	}
 
 	public static final Solution delete(Solution s) throws SQLException {
-		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = conn.prepareStatement(Query.deleteSolution())) {
+		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, Query.deleteSolution(), s.getId())) {
 			ps.executeUpdate();
 			s.setId(0);
 			return s;
@@ -93,8 +93,25 @@ public class SolutionDao {
 		return ps;
 	}
 
-	private static final PreparedStatement create(Connection conn, String... genCol) throws SQLException {
-		return conn.prepareStatement(Query.insertSolution(), genCol);
+	private static final PreparedStatement create(Connection conn, Solution s, String... genCol) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(Query.insertSolution(), genCol);
+		ps.setString(1, s.getCreated());
+		ps.setString(2, s.getUpdated());
+		ps.setString(3, s.getDescription());
+		ps.setInt(4, s.getExerciseId());
+		ps.setLong(5, s.getUserId());
+		return ps;
+	}
+
+	private static final PreparedStatement create(Connection conn, Solution s) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(Query.updateSolution());
+		ps.setString(1, s.getCreated());
+		ps.setString(2, s.getUpdated());
+		ps.setString(3, s.getDescription());
+		ps.setInt(4, s.getExerciseId());
+		ps.setLong(5, s.getUserId());
+		ps.setInt(6, s.getId());
+		return ps;
 	}
 
 	private static final PreparedStatement create(Connection conn, long id) throws SQLException {

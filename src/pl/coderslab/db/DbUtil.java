@@ -1,7 +1,11 @@
 package pl.coderslab.db;
 
+import org.joda.time.DateTime;
+
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -25,5 +29,13 @@ public class DbUtil {
 			}
 		}
 		return ds;
+	}
+
+	public static String convert(Date d) {
+		return new Timestamp(d.getTime()).toString();
+	}
+
+	public static String convert(DateTime dt) {
+		return new Timestamp(dt.getMillis()).toString();
 	}
 }

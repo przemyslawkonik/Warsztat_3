@@ -10,6 +10,7 @@
 <h2>Administrator panel</h2>
 <a href="/Warsztat_3/groupManager">Manage groups</a><br>
 <a href="/Warsztat_3/userManager">Manage users</a><br>
-<a href="/Warsztat_3/exerciseManager">Manage exercises</a>
+<a href="/Warsztat_3/exerciseManager">Manage exercises</a><br>
+<a href="/Warsztat_3/solutionManager">Manage solutions</a>
 </body>
 </html>

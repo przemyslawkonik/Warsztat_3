@@ -27,8 +27,8 @@
             <td>${s.description}</td>
             <td>${s.userId}</td>
             <td>${s.exerciseId}</td>
-            <td><a href="/Warsztat_3/solutionEdit.jsp?id=${e.id}">edit</a></td>
-            <td><a href="/Warsztat_3/solutionManager?id=${e.id}">remove</a></td>
+            <td><a href="/Warsztat_3/solutionEdit.jsp?id=${s.id}">edit</a></td>
+            <td><a href="/Warsztat_3/solutionManager?id=${s.id}">remove</a></td>
         </tr>
     </c:forEach>
 </table>

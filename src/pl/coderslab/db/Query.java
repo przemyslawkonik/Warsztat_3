@@ -71,7 +71,7 @@ public class Query {
 	}
 
 	public static final String updateSolution() {
-		return "UPDATE solution SET created=?, updated=?, description=? exercise_id=?, user_id=? WHERE id=?";
+		return "UPDATE solution SET created=?, updated=?, description=?, exercise_id=?, users_id=? WHERE id=?";
 	}
 
 	public static final String deleteSolution() {

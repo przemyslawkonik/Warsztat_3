@@ -34,9 +34,9 @@ public class GroupManager extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			String removeId = request.getParameter("remove_id");
-			if (removeId != null) {
-				int id = Integer.parseInt(removeId);
+			String idStr = request.getParameter("id");
+			if (idStr != null) {
+				int id = Integer.parseInt(idStr);
 				GroupDao.delete(GroupDao.loadById(id));
 			}
 

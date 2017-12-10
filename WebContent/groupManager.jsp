@@ -20,7 +20,7 @@
    <tr>
     <td>${g.name}</td>
     <td><a href="/Warsztat_3/groupForm.jsp?id=${g.id}">edit</a></td>
-    <td><a href="/Warsztat_3/groupManager?remove_id=${g.id}">remove</a></td>
+    <td><a href="/Warsztat_3/groupManager?id=${g.id}">remove</a></td>
    </tr>
   </c:forEach>
  </table>

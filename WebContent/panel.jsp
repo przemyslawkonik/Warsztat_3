@@ -9,5 +9,6 @@
 <body>
 <h2>Administrator panel</h2>
 <a href="/Warsztat_3/groupManager">Manage groups</a>
+<a href="/Warsztat_3/userManager">Manage users</a>
 </body>
 </html>

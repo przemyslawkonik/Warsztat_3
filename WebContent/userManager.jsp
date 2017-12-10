@@ -1,3 +1,4 @@
+<%@page import="pl.coderslab.dao.GroupDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -8,7 +9,7 @@
     <title>User manager</title>
 </head>
 <body>
-<% request.setAttribute("groups", request.getAttribute("groups")); %>
+<% request.setAttribute("groups", GroupDao.loadAll()); %>
 <%@include file="WEB-INF/fragments/header.jspf"%>
 <h2>Users</h2>
 <table border="1">
@@ -24,12 +25,12 @@
             <td>${u.username}</td>
             <td>${u.email}</td>
             <td>${u.userGroupId}</td>
-            <td><a href="/Warsztat_3/userForm.jsp?id=${u.id}">edit</a></td>
+            <td><a href="/Warsztat_3/userForm?id=${u.id}">edit</a></td>
             <td><a href="/Warsztat_3/userManager?id=${u.id}">remove</a></td>
         </tr>
     </c:forEach>
 </table>
-<a href="/Warsztat_3/userForm.jsp?id=0">Add new user</a>
+<a href="/Warsztat_3/userForm?id=0">Add new user</a>
 <%@include file="WEB-INF/fragments/footer.jspf"%>
 </body>
 </html>

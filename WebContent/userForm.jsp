@@ -14,13 +14,14 @@
     Password <input type="text" name="password"><br>
     Group <select name="group_id">
         <c:forEach var="g" items="${groups}">
-        <option value=${g.id}>${g.name}</option>
+        <option value="${g.id}">${g.name}</option>
         </c:forEach>
-    <input type="hidden" name="id" value="${param.id}">
-    <c:if test="${param.id == 0}">
+        </select>
+    <input type="hidden" name="id" value="${id}">
+    <c:if test="${id == 0}">
         <input type="submit" value="Add user">
     </c:if>
-    <c:if test="${param.id > 0}">
+    <c:if test="${id > 0}">
         <input type="submit" value="Edit user">
     </c:if>
 </form>

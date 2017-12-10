@@ -23,14 +23,14 @@ public class ExerciseDao {
 
 	public static final Exercise loadById(int id) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = create(conn, id);
+				PreparedStatement ps = create(conn, Query.selectExerciseById(), id);
 				ResultSet rs = ps.executeQuery()) {
 			return load(rs).get(0);
 		}
 	}
 
 	public static final Exercise save(Exercise e) throws SQLException {
-		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, "id")) {
+		try (Connection conn = DbUtil.getConn(); PreparedStatement ps = create(conn, e, "id")) {
 			ps.executeUpdate();
 			try (ResultSet rs = ps.getGeneratedKeys()) {
 				e.setId(rs.getInt(1));
@@ -41,7 +41,7 @@ public class ExerciseDao {
 
 	public static final Exercise update(Exercise e) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = conn.prepareStatement(Query.updateExercise())) {
+				PreparedStatement ps = create(conn, e)) {
 			ps.executeUpdate();
 			return e;
 		}
@@ -49,7 +49,7 @@ public class ExerciseDao {
 
 	public static final Exercise delete(Exercise e) throws SQLException {
 		try (Connection conn = DbUtil.getConn();
-				PreparedStatement ps = conn.prepareStatement(Query.deleteExercise())) {
+				PreparedStatement ps = create(conn, Query.deleteExercise(), e.getId())) {
 			ps.executeUpdate();
 			e.setId(0);
 			return e;
@@ -64,13 +64,24 @@ public class ExerciseDao {
 		return excercises;
 	}
 
-	private static final PreparedStatement create(Connection conn, int id) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement(Query.selectExerciseById());
+	private static final PreparedStatement create(Connection conn, String query, int id) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(query);
 		ps.setInt(1, id);
 		return ps;
 	}
 
-	private static final PreparedStatement create(Connection conn, String... genCol) throws SQLException {
-		return conn.prepareStatement(Query.insertExercise(), genCol);
+	private static final PreparedStatement create(Connection conn, Exercise e, String... genCol) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(Query.insertExercise(), genCol);
+		ps.setString(1, e.getTitle());
+		ps.setString(2, e.getDescription());
+		return ps;
+	}
+
+	private static final PreparedStatement create(Connection conn, Exercise e) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(Query.updateExercise());
+		ps.setString(1, e.getTitle());
+		ps.setString(2, e.getDescription());
+		ps.setInt(3, e.getId());
+		return ps;
 	}
 }

@@ -2,123 +2,125 @@ package pl.coderslab.db;
 
 public class Query {
 
-	public static final String insertUser() {
-		return "INSERT INTO users(username, email, password, user_group_id) VALUES(?, ?, ?, ?)";
+	public static String insertGroup() {
+		return "INSERT INTO group(name) VALUES(?)";
 	}
 
-	public static final String updateUser() {
-		return "UPDATE users SET username=?, email=?, password=?, user_group_id=? WHERE id=?";
+	public static String updateGroup() {
+		return "UPDATE group SET name=? WHERE id=?";
 	}
 
-	public static final String deleteUser() {
-		return "DELETE FROM users WHERE id=?";
+	public static String deleteGroup() {
+		return "DELETE FROM group WHERE id=?";
 	}
 
-	public static final String selectAllUsers() {
-		return "SELECT * FROM users";
+	public static String selectAllGroups() {
+		return "SELECT * FROM group";
 	}
 
-	public static final String selectAllUsersByGroupId() {
-		return "SELECT * FROM users WHERE user_group_id=?";
+	public static String selectGroupById() {
+		return "SELECT * FROM group WHERE id=?";
 	}
 
-	public static final String selectUserById() {
-		return "SELECT * FROM users WHERE id=?";
+
+
+	public static String insertUser() {
+		return "INSERT INTO user(username, email, password, group_id) VALUES(?, ?, ?, ?)";
 	}
 
-	public static final String insertGroup() {
-		return "INSERT INTO user_group(name) VALUES(?)";
+	public static String updateUser() {
+		return "UPDATE user SET username=?, email=?, password=?, group_id=? WHERE id=?";
 	}
 
-	public static final String updateGroup() {
-		return "UPDATE user_group SET name=? WHERE id=?";
+	public static String deleteUser() {
+		return "DELETE FROM user WHERE id=?";
 	}
 
-	public static final String deleteGroup() {
-		return "DELETE FROM user_group WHERE id=?";
+	public static String selectAllUsers() {
+		return "SELECT * FROM user";
 	}
 
-	public static final String selectAllGroups() {
-		return "SELECT * FROM user_group";
+	public static String selectAllUsersByGroupId() {
+		return "SELECT * FROM user WHERE group_id=?";
 	}
 
-	public static final String selectGroupById() {
-		return "SELECT * FROM user_group WHERE id=?";
+	public static String selectUserById() {
+		return "SELECT * FROM user WHERE id=?";
 	}
 
-	public static final String insertExercise() {
+	public static String insertExercise() {
 		return "INSERT INTO exercise(title, description) VALUES(?, ?)";
 	}
 
-	public static final String updateExercise() {
+	public static String updateExercise() {
 		return "UPDATE exercise SET title=?, description=? WHERE id=?";
 	}
 
-	public static final String deleteExercise() {
+	public static String deleteExercise() {
 		return "DELETE FROM exercise WHERE id=?";
 	}
 
-	public static final String selectAllExercises() {
+	public static String selectAllExercises() {
 		return "SELECT * FROM exercise";
 	}
 
-	public static final String selectExerciseById() {
+	public static String selectExerciseById() {
 		return "SELECT * FROM exercise WHERE id=?";
 	}
 
-	public static final String insertSolution() {
-		return "INSERT INTO solution(created, updated, description, exercise_id, users_id) VALUES(?, ?, ?, ?, ?)";
+	public static String insertSolution() {
+		return "INSERT INTO solution(created, updated, description, exercise_id, user_id) VALUES(?, ?, ?, ?, ?)";
 	}
 
-	public static final String updateSolution() {
-		return "UPDATE solution SET created=?, updated=?, description=?, exercise_id=?, users_id=? WHERE id=?";
+	public static String updateSolution() {
+		return "UPDATE solution SET created=?, updated=?, description=?, exercise_id=?, user_id=? WHERE id=?";
 	}
 
-	public static final String deleteSolution() {
+	public static String deleteSolution() {
 		return "DELETE FROM solution WHERE id=?";
 	}
 
-	public static final String selectAllSolutions() {
+	public static String selectAllSolutions() {
 		return "SELECT * FROM solution ORDER BY updated DESC";
 	}
 
-	public static final String selectAllSolutionsWithLimit() {
+	public static String selectAllSolutionsWithLimit() {
 		return "SELECT * FROM solution ORDER BY updated DESC LIMIT ?";
 	}
 
-	public static final String selectSolutionById() {
+	public static String selectSolutionById() {
 		return "SELECT * FROM solution WHERE id=?";
 	}
 
-	public static final String selectAllSolutionsByUserId() {
-		return "SELECT * FROM solution WHERE users_id=?";
+	public static String selectAllSolutionsByUserId() {
+		return "SELECT * FROM solution WHERE user_id=?";
 	}
 
-	public static final String selectAllSolutionsByExerciseId() {
+	public static String selectAllSolutionsByExerciseId() {
 		return "SELECT * FROM solution WHERE exercise_id=? ORDER BY created DESC";
 	}
 
-	public static final String selectAllSolutionsUsersExercise() {
-		return "SELECT users.id, users.username, exercise.id, exercise.title, solution.id, solution.updated"
-				+ " FROM users JOIN solution ON users.id=solution.users_id"
+	public static String selectAllSolutionsDto() {
+		return "SELECT user.id, user.username, exercise.id, exercise.title, solution.id, solution.updated"
+				+ " FROM user JOIN solution ON user.id=solution.user_id"
 				+ " JOIN exercise ON exercise.id=solution.exercise_id ORDER BY updated DESC";
 	}
 	
-	public static final String selectAllSolutionsDtoWithLimit() {
-		return "SELECT users.id, users.username, exercise.id, exercise.title, solution.id, solution.updated"
-				+ " FROM users JOIN solution ON users.id=solution.users_id"
+	public static String selectAllSolutionsDtoWithLimit() {
+		return "SELECT user.id, user.username, exercise.id, exercise.title, solution.id, solution.updated"
+				+ " FROM user JOIN solution ON user.id=solution.user_id"
 				+ " JOIN exercise ON exercise.id=solution.exercise_id ORDER BY updated DESC LIMIT ?";
 	}
 	
-	public static final String selectAllSolutionsDtoByUserId() {
-		return "SELECT users.id, users.username, exercise.id, exercise.title, solution.id, solution.updated"
-				+ " FROM users JOIN solution ON users.id=solution.users_id"
-				+ " JOIN exercise ON exercise.id=solution.exercise_id WHERE users.id=? ORDER BY updated";
+	public static String selectAllSolutionsDtoByUserId() {
+		return "SELECT user.id, user.username, exercise.id, exercise.title, solution.id, solution.updated"
+				+ " FROM user JOIN solution ON users.id=solution.user_id"
+				+ " JOIN exercise ON exercise.id=solution.exercise_id WHERE user.id=? ORDER BY updated";
 	}
 	
-	public static final String selectAllSolutionsDtoByExerciseId() {
-		return "SELECT users.id, users.username, exercise.id, exercise.title, solution.id, solution.updated"
-				+ " FROM users JOIN solution ON users.id=solution.users_id"
+	public static String selectAllSolutionsDtoByExerciseId() {
+		return "SELECT user.id, user.username, exercise.id, exercise.title, solution.id, solution.updated"
+				+ " FROM user JOIN solution ON user.id=solution.user_id"
 				+ " JOIN exercise ON exercise.id=solution.exercise_id WHERE exercise.id=? ORDER BY updated";
 	}
 	

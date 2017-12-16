@@ -4,6 +4,4 @@ Web application for managing programming school. Provides CRUD functionality. Al
 
 Database script: sql/db.sql
 
-Database connection configuration: 
-  WebContent/META-INF/context.xml
-  src/pl/coderslab/db/DbUtil.java
+Database connection configuration:  WebContent/META-INF/context.xml   src/pl/coderslab/db/DbUtil.java
